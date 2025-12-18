@@ -1,21 +1,55 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Person",
-  "type": "object",
-  "properties": {
-    "firstname": {
-      "type": "string"
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Person",
+    "type": "object",
+    "properties": {
+        "vorname": {
+            "type": "string"
+        },
+        "nachname": {
+            "type": "string"
+        },
+        "geburtsdatum": {
+            "type": "string",
+            "format": "date"
+        },
+        "geburtsort": {
+            "type": "string"
+        },
+        "geschlecht": {
+            "type": "string",
+            "enum": [
+                "d",
+                "m",
+                "w",
+                "x"
+            ]
+        },
+        "adresse": {
+            "title": "Address",
+            "type": "object",
+            "required": [
+                "plz",
+                "ort"
+            ],
+            "properties": {
+                "strasse": {
+                    "type": "string"
+                },
+                "hausnummer": {
+                    "type": "string"
+                },
+                "plz": {
+                    "type": "string"
+                },
+                "ort": {
+                    "type": "string"
+                }
+            }
+        }
     },
-    "lastname": {
-      "type": "string"
-    },
-    "birthday": {
-      "type": "string",
-      "format": "date"
-    },
-    "nationality": {
-      "type": "string"
-    }
-  },
-  "required": ["firstname", "lastname", "birthday", "nationality"]
+    "required": [
+		"nachname",
+        "adresse"
+    ]
 }
